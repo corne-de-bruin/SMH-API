@@ -16,7 +16,7 @@ export class CreateBruce implements Seed {
         platform.description = 'Connect to your hue';
         platform.image = '/platforms/philips_hue.png';
         platform.authenticationType = 'oauth';
-        platform.authenticationUrl = 'https://smarthome-tst.innogynederland.nl/auth/hue';
+        platform.authenticationUrl = '/auth/hue';
         return await em.save(platform);
     }
 
