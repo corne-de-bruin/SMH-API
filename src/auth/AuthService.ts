@@ -34,10 +34,7 @@ export class AuthService {
         return new Promise((resolve, reject) => {
             this.httpRequest({
                 method: 'POST',
-                url: env.auth.route,
-                form: {
-                    id_token: token,
-                },
+                url: env.auth.route + token,
             }, (error: any, response: request.RequestResponse, body: any) => {
                 // Verify if the requests was successful and append user
                 // information to our extended express request object

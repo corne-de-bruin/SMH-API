@@ -1,10 +1,6 @@
 import {
-    GraphQLFieldConfigMap, GraphQLID, GraphQLList, GraphQLObjectType, GraphQLString
+    GraphQLFieldConfigMap, GraphQLID, GraphQLObjectType, GraphQLString
 } from 'graphql';
-
-import { GraphQLContext } from '../../lib/graphql';
-import { User } from '../models/User';
-import { PetOfUserType } from './PetType';
 
 const UserFields: GraphQLFieldConfigMap = {
     id: {
@@ -28,17 +24,7 @@ const UserFields: GraphQLFieldConfigMap = {
 export const UserType = new GraphQLObjectType({
     name: 'User',
     description: 'A single user.',
-    fields: () => ({ ...UserFields, ...{
-        pets: {
-            type: new GraphQLList(PetOfUserType),
-            description: 'The pets of a user',
-            resolve: async (user: User, args: any, context: GraphQLContext<any, any>) =>
-                // We use data-loaders to save db queries
-                context.dataLoaders.petsByUserIds.load(user.id),
-                // This would be the case with a normal service, but not very fast
-                // context.container.get<PetService>(PetService).findByUser(user),
-        },
-    } }),
+    fields: () => ({ ...UserFields }),
 });
 
 export const OwnerType = new GraphQLObjectType({

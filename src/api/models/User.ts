@@ -1,7 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-
-import { Pet } from './Pet';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -20,9 +18,6 @@ export class User {
     @IsNotEmpty()
     @Column()
     public email: string;
-
-    @OneToMany(type => Pet, pet => pet.user)
-    public pets: Pet[];
 
     public toString(): string {
         return `${this.firstName} ${this.lastName} (${this.email})`;

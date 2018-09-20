@@ -29,9 +29,10 @@ export class CreateBruce implements Seed {
         const em = connection.createEntityManager();
 
         const user = new User();
-        user.firstName = 'Bruce';
-        user.lastName = 'Wayne';
-        user.email = 'bruce.wayne@wayne-enterprises.com';
+        user.id = '1';
+        user.firstName = 'Corne';
+        user.lastName = 'de Bruin';
+        user.email = 'corne.de.bruin@essent.nl';
         return await em.save(user);
     }
 
